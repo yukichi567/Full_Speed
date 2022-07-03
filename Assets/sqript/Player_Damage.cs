@@ -1,22 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class Player_Damage : MonoBehaviour
 {
     [SerializeField] Image _Life;
-    [SerializeField] int _Hp = 3;
+    [SerializeField] int _Hp = 5;
     [SerializeField] Image _BackGround;
     [SerializeField] Image _GameOver;
     [SerializeField] Text _time;
     [SerializeField] Image _Continue;
-    [SerializeField] float _timer = 3;
+    [SerializeField] float _timer = 1;
 
-     float _MaxHp = 1f;
 
-    GameObject RM;
+    float _MaxHp = 1f;
+
     GameObject PM;
     //スタートボタン設定
 
@@ -24,7 +21,7 @@ public class Player_Damage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PM = GameObject.Find("marimo");
+        PM = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -32,8 +29,6 @@ public class Player_Damage : MonoBehaviour
     {
         _timer += Time.deltaTime;
 
-        var MOVE = PM.GetComponent<Player>();
-        _Life.GetComponent<Image>().fillAmount = _MaxHp;
 
         if (_Hp <= 0)
         {
@@ -41,28 +36,31 @@ public class Player_Damage : MonoBehaviour
             _GameOver.gameObject.SetActive(true);
             _time.gameObject.SetActive(true);
             _Continue.gameObject.SetActive(true);
-            //MOVE.speed = 0f;
-            //MOVE.jumpForce = 0f;
+
         }
 
     }
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (_timer >= 3 && collision.gameObject.tag == "Enemy")
+            if (_timer >= 1 && collision.gameObject.tag == "Enemy" || _timer >= 1 && collision.gameObject.tag == "Wall")
             {
                 _Hp -= 1;
                 _timer = 0;
-                _MaxHp -= 0.33334f;
+                _MaxHp -= 0.2f;
             }
-        }
+            else if (_timer >= 1 && collision.gameObject.tag == "Police")
+            {
+                _Hp -= 2;
+                _timer = 0;
+                _MaxHp -= 0.4f;
+                
+            }
+
+    }
         
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Holy Light")
-        {
-            _Hp = 3;
-            _MaxHp = 1f;
-        }
+
     }
 
 }

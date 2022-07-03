@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,9 +10,13 @@ public class GameManager : MonoBehaviour
     public int stageNum;
     public int continueNum;
 
+    float _time;
+    [SerializeField] Text Timer;
+
     // Start is called before the first frame update
     private void Awake()
     {
+
         if (instance == null)
         {
             instance = this;
@@ -21,5 +26,14 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void Update()
+    {
+        _time += Time.deltaTime;
+        float time = 60 - _time;
+        Timer.text = $"time:{time.ToString("f1")}";
+
+
     }
 }
