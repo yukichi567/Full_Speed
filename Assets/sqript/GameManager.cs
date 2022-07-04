@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         _time += Time.deltaTime;
         float time = 60 - _time;
-        Timer.text = $"time:{time.ToString("f1")}";
+        Timer.text = $"{time.ToString("f1")}";
 
 
     }

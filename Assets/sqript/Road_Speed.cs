@@ -24,15 +24,11 @@ public class Road_Speed : MonoBehaviour
         if (transform.position.y < _endPos.y)
             transform.position = _restartPos;
 
-        if (Input.GetKey(KeyCode.Space)  && _scrollSpeed < 60)
+        if (Input.GetKeyDown(KeyCode.Space)  && _scrollSpeed < 60)
         {
             _scrollSpeed += 10;
         }
-        else if (Input.GetKey(KeyCode.Space) && _scrollSpeed < 50)
-        {
-            _scrollSpeed += 10;
-        }
-        else if (Input.GetKey(KeyCode.LeftShift) && _scrollSpeed > 10)
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && _scrollSpeed > 10)
         {
             _scrollSpeed -= 10;
         }
