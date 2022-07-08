@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Player_Damage : MonoBehaviour
 {
     [SerializeField] Image _Life;
-    [SerializeField] int _Hp = 5;
+    [SerializeField] int _HP = 5;
     [SerializeField] Image _BackGround;
     [SerializeField] Image _GameOver;
     [SerializeField] Text _time;
@@ -28,9 +28,9 @@ public class Player_Damage : MonoBehaviour
     void Update()
     {
         _timer += Time.deltaTime;
+        _Life.GetComponent<Image>().fillAmount = _MaxHp;
 
-
-        if (_Hp <= 0)
+        if (_HP <= 0)
         {
             _BackGround.gameObject.SetActive(true);
             _GameOver.gameObject.SetActive(true);
@@ -44,18 +44,17 @@ public class Player_Damage : MonoBehaviour
         {
             if (_timer >= 1 && collision.gameObject.tag == "Enemy" || _timer >= 1 && collision.gameObject.tag == "Wall")
             {
-                _Hp -= 1;
+                _HP -= 1;
                 _timer = 0;
                 _MaxHp -= 0.2f;
             }
             else if (_timer >= 1 && collision.gameObject.tag == "Police")
             {
-                _Hp -= 2;
+                _HP -= 2;
                 _timer = 0;
                 _MaxHp -= 0.4f;
                 
             }
-
     }
         
     private void OnTriggerEnter2D(Collider2D collision)

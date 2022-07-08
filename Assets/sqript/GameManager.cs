@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int stageNum;
     public int continueNum;
 
+
     float _time;
     [SerializeField] Text Timer;
 
@@ -26,6 +27,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void Update()

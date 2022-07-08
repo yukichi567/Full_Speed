@@ -6,6 +6,7 @@ public class Road_Speed : MonoBehaviour
 {
     /// <summary>スクロールするスピード</summary>
     [SerializeField] float _scrollSpeed;
+
     /// <summary>下まで行ったらこの位置にリセットされる</summary>
     Vector3 _restartPos = new Vector3(0, 10, 0);
     /// <summary>ここまで来たら位置をリセットする</summary>
