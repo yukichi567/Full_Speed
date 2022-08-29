@@ -20,16 +20,17 @@ public class Score : MonoBehaviour
         {
             Debug.Log("ゲームマネージャー置き忘れてるよ！");
             Destroy(this);
-        }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (oldScore != GameManager.instance.score)
+        }
+
+        // Update is called once per frame
+        void Update()
         {
-            scoreText.text = "Score " + GameManager.instance.score;
-            oldScore = GameManager.instance.score;
+            if (oldScore != GameManager.instance.score)
+            {
+                scoreText.text = "Score " + GameManager.instance.score;
+                oldScore = GameManager.instance.score;
+            }
         }
     }
 }

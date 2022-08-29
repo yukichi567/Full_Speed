@@ -7,6 +7,11 @@ TagManager:
   - Wall
   - Road
   - Enemy
+  - Wall2
+  - Item
+  - Repair
+  - Accelerator
+  - Truck
   layers:
   - Default
   - TransparentFX
@@ -14,10 +19,10 @@ TagManager:
   - Road
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Wall2
+  - Item
+  - Player
   - 
   - 
   - 
