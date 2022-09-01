@@ -5,9 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     //
-    [SerializeField] float _xspeed = 6f;
+    //[SerializeField] float _xspeed = 6f;
     [SerializeField] float _yspeed = 6f;
-
 
     //画面街では行動しない
     Renderer targetRenderer;
@@ -22,24 +21,29 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] float _lifeTime = 3f;
 
+
     /// <summary>Destroy時に表示されるエフェクト</summary>
     [SerializeField] GameObject m_effectPrefab = default;
     public int dir = 1;
+    [SerializeField] GameManager _EnemyPoint;
 
     void Start()
-    {        
+    {
+        //GetChildren(this.Roed);
         PlayerObject = GameObject.FindWithTag("Player");
         PlayeyPosition = PlayerObject.transform.position;
         EnemyPosotion = transform.position;
         _rb = GetComponent<Rigidbody2D>();
         targetRenderer = GetComponent<Renderer>();
+        PlayeyPosition = PlayerObject.transform.position;
+        EnemyPosotion = transform.position;
+
+        _EnemyPoint = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        PlayeyPosition = PlayerObject.transform.position;
-        EnemyPosotion = transform.position;
         float distance = Vector2.Distance(EnemyPosotion, PlayeyPosition);
 
         if (targetRenderer.isVisible && distance < _tagetarea)
@@ -58,9 +62,10 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == ("Wall"))
+      
+        if (collision.gameObject.tag == ("Wall") && targetRenderer.isVisible)
         {
-
+            //_EnemyPoint.score += 5000;
             Destroy(gameObject);
             Instantiate(m_effectPrefab, transform.position, transform.rotation);
         }

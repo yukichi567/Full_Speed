@@ -10,9 +10,16 @@ public class Generator : MonoBehaviour
     [SerializeField] AudioClip _bgm;
     float _timer;
 
+    /// <summary>フィールドのオブジェクトを格納</summary>
+    GameObject _field;
+
     private void Awake()
     {
         //SoundManager.Instance.PlayBGM(_bgm);
+    }
+    void Start()
+    {
+        _field = GameObject.FindGameObjectWithTag("Road");
     }
 
     void Update()
@@ -22,7 +29,9 @@ public class Generator : MonoBehaviour
         {
             int number = Random.Range(0, _Generateposition.Length);
             int num = Random.Range(0, _Enemy.Length);
-            Instantiate(_Enemy[num], _Generateposition[number]);
+            GameObject Car = Instantiate(_Enemy[num]);
+            Car.transform.position =  _Generateposition[number].position;
+            Car.transform.SetParent(_field.transform );
             _timer = 0;
         }
     }

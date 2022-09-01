@@ -7,37 +7,40 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
-    public int stageNum;
-    public int continueNum;
 
-    Road_Speed _scrollSpeed;
-    float _speed;
 
+
+    public float _Point ;
+ 
+    [SerializeField]
+    [Header("経過時間")]
     public float _count;
-    public float _time = 60f;
-   [SerializeField] Text _Timer;
+    public float _time ;
+    //[SerializeField] Text _Timer;
+    [SerializeField] Text _timerlimit;
 
 
-    [SerializeField] Text _score;
-    public int score;
+    [SerializeField]
+    [Header("プレイ時間の初期値")]
+    private float _GameOverTime = 60f;
 
+    [Header("ゲームオーバー画面")]
+    [SerializeField] GameObject gameover = null;
+
+    int score = 0;
+    [SerializeField]  Text _score;
+     
     GameObject P2;
     GameObject PD;
     GameObject TM;
-    [SerializeField] float _timer;
-    [SerializeField] Text _timerlimit;
+    Road_Speed _scrollSpeed;
+    float _EnemyPoint;
 
     /// <summary>スコア表示用 Text</summary>
-
-        /// <summary>GameOver 表示用 Text</summary>
-    [SerializeField] GameObject gameover = null;
-
-
 
     // Start is called before the first frame update
     private void Awake()
     {
-
 
         if (instance == null)
         {
@@ -56,6 +59,8 @@ public class GameManager : MonoBehaviour
         P2 = GameObject.Find("Player");
         TM = GameObject.Find("Time");
         _scrollSpeed = GameObject.FindObjectOfType<Road_Speed>();
+
+        _Point = 0;
         //if (gameover)
         //{
         //    gameover.enabled = false;
@@ -64,19 +69,26 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        _Point += _scrollSpeed._scrollSpeed / 10;
 
-
-        _speed += _scrollSpeed._scrollSpeed / 10;
-        _timer += Time.deltaTime;
-        _count = _time - _timer;
+        _time += Time.deltaTime;
+        _count = _GameOverTime - _time;
         _timerlimit.text = $"{_count.ToString("F1")}";
-        _score.text = $"{_speed.ToString("F0")}";
 
-        if(_count <= 0 )
-        {
-            _scrollSpeed._scrollSpeed = 0;
-        }
+        _score.text = $"{_Point.ToString("F0")}";
+
+        _score.text = score.ToString();
+
+        //if (_count <= 0 )
+        //{
+        //    _scrollSpeed._scrollSpeed = 0;
+        //}
+
     }
 
+    public void Point(int i )
+    {
+        _Point += i;
+    }
 
 }

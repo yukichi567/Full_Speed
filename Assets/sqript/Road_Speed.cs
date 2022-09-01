@@ -29,10 +29,10 @@ public class Road_Speed : MonoBehaviour
         {
             _scrollSpeed += 5;
         }
-        //else if (Input.GetKeyDown(KeyCode.Space) && _scrollSpeed < 30 && 20 <= _scrollSpeed )
-        //{
-        //    _scrollSpeed += 10;
-        //}
+        else if (Input.GetKeyDown(KeyCode.Space) && _scrollSpeed < 30 && 20 <= _scrollSpeed )
+        {
+            _scrollSpeed += 10;
+        }
 
         else if (Input.GetKeyDown(KeyCode.LeftShift) && _scrollSpeed > 10)
         {

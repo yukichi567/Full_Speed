@@ -16,11 +16,11 @@ public class Player_Damage : MonoBehaviour
     [SerializeField] Image _BackGround;
     [SerializeField] Image _GameOver;
     [SerializeField] Text _GameOvertime;
-    [SerializeField] Text _Continue;
+    [SerializeField] Button _Continue;
     GameObject PM;
     GameObject RM;
 
-    //Sqript=Road_Speed variable
+    //Road_Speed variable
     Road_Speed _scrollSpeed;
     PlayerController _PlayerSpeed;
     GameManager _time;
@@ -65,6 +65,7 @@ public class Player_Damage : MonoBehaviour
                 //_MaxHp -= 0.2f;
                 _scrollSpeed._scrollSpeed = 10;
 
+
         }
         else if (_Damagetimer >= 1 && collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Truck")
         {
@@ -72,7 +73,7 @@ public class Player_Damage : MonoBehaviour
             _Damagetimer = 0;
             _MaxHp -= 0.2f;
             _scrollSpeed._scrollSpeed = 10;
-            _time._time -= 3;
+            _time._time += 3;
         }
         else if (_Damagetimer >= 1 && collision.gameObject.tag == "Police")
         {
@@ -80,7 +81,7 @@ public class Player_Damage : MonoBehaviour
                 _Damagetimer = 0;
                 _MaxHp -= 0.4f;
                 _scrollSpeed._scrollSpeed = 10;
-            _time._time -= 10;
+           // _time._time -= 10;
 
         }
     }

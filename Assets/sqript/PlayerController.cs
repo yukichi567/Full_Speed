@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
         if(_HP == 0)
         {
+            
             if (explosionEffect)
             {
                 GameObject go = Instantiate(explosionEffect);

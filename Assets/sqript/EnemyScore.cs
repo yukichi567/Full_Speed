@@ -8,6 +8,7 @@ public class EnemyScore : MonoBehaviour
     //scoreä÷åW
     [Header("â¡éZÉXÉRÉA")] public int _EnemyScore;
 
+
     GameObject RS;
     // Start is called before the first frame update
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class EnemyScore : MonoBehaviour
         //New!
         if (GameManager.instance != null)
         {
-            GameManager.instance.score += _EnemyScore;
+           // GameManager.instance.score += _EnemyScore;
             Destroy(this.gameObject);
        }
     }
