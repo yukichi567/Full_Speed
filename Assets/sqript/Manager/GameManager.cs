@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 
         _score.text = $"{_Point.ToString("F0")}";
 
-        _score.text = score.ToString();
+       // _score.text = score.ToString();
 
         //if (_count <= 0 )
         //{

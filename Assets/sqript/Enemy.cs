@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     Vector2 EnemyPosotion;
     private Rigidbody2D _rb = null;
 
-    [SerializeField] float _lifeTime = 3f;
+    [SerializeField] float _lifeTime = 1f;
 
 
     /// <summary>Destroy時に表示されるエフェクト</summary>
@@ -38,12 +38,14 @@ public class Enemy : MonoBehaviour
         PlayeyPosition = PlayerObject.transform.position;
         EnemyPosotion = transform.position;
 
-        _EnemyPoint = GameObject.FindObjectOfType<GameManager>();
+       // _EnemyPoint = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        PlayeyPosition = PlayerObject.transform.position;
+        EnemyPosotion = transform.position;
         float distance = Vector2.Distance(EnemyPosotion, PlayeyPosition);
 
         if (targetRenderer.isVisible && distance < _tagetarea)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy2 : MonoBehaviour
 {
-    [SerializeField] float _xspeed = 6f;
+    //[SerializeField] float _xspeed = 6f;
     [SerializeField] float _yspeed = 6f;
 
 

@@ -15,7 +15,9 @@ public class Player_Damage : MonoBehaviour
     //gameover
     [SerializeField] Image _BackGround;
     [SerializeField] Image _GameOver;
-    [SerializeField] Text _GameOvertime;
+    public float _GameOvertimer;
+    public float _ContinueCount;
+   [SerializeField] Text _GameOvertime;
     [SerializeField] Button _Continue;
     GameObject PM;
     GameObject RM;
@@ -44,7 +46,6 @@ public class Player_Damage : MonoBehaviour
         if (_HP <= 0)
         {
             _timerlimit.gameObject.SetActive(true);
-
             _scrollSpeed._scrollSpeed = 0;
             _PlayerSpeed._PlayerSpeed = 0;
             _BackGround.gameObject.SetActive(true);
@@ -73,7 +74,7 @@ public class Player_Damage : MonoBehaviour
             _Damagetimer = 0;
             _MaxHp -= 0.2f;
             _scrollSpeed._scrollSpeed = 10;
-            _time._time += 3;
+            //_time._time += 3;
         }
         else if (_Damagetimer >= 1 && collision.gameObject.tag == "Police")
         {
@@ -84,11 +85,14 @@ public class Player_Damage : MonoBehaviour
            // _time._time -= 10;
 
         }
+
     }
         
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Gameover()
     {
-
+        _GameOvertimer += Time.deltaTime;
+        _ContinueCount = 10 - _GameOvertimer;
+        _timerlimit.text = $"{_ContinueCount.ToString("F1")}";
     }
 }
 
