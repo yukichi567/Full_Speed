@@ -5,11 +5,8 @@ using UnityEngine.UI;
 
 public class TimerSlider : MonoBehaviour
 {
-
-
     float t = 0;
     Slider slider;
-
 
     void Start()
     {

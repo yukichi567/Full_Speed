@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
         _time += Time.deltaTime;
         _count = _GameOverTime - _time;
-        _timerlimit.text = $"{_count.ToString("F1")}";
+        //_timerlimit.text = $"{_count.ToString("F1")}";
 
         _score.text = $"{_Point.ToString("F0")}";
 

@@ -17,8 +17,10 @@ public class Player_Damage : MonoBehaviour
     [SerializeField] Image _GameOver;
     public float _GameOvertimer;
     public float _ContinueCount;
-   [SerializeField] Text _GameOvertime;
+    [SerializeField] Text _GameOvertime;
     [SerializeField] Button _Continue;
+     float _ContinueTime;
+    [SerializeField] GameObject explosionEffect = null;
     GameObject PM;
     GameObject RM;
 
@@ -42,9 +44,11 @@ public class Player_Damage : MonoBehaviour
         _Damagetimer += Time.deltaTime;
         _Life.GetComponent<Image>().fillAmount = _MaxHp;;
 
+        _ContinueTime += Time.deltaTime;
 
         if (_HP <= 0)
         {
+             //GameObject go = Instantiate(explosionEffect);
             _timerlimit.gameObject.SetActive(true);
             _scrollSpeed._scrollSpeed = 0;
             _PlayerSpeed._PlayerSpeed = 0;
@@ -53,7 +57,13 @@ public class Player_Damage : MonoBehaviour
             _time.gameObject.SetActive(true);
             _Continue.gameObject.SetActive(true);
 
+            _GameOvertime.text = $"{_ContinueTime.ToString("F0")}";
         }
+
+
+            
+            //Destroy(this.gameObject);   // Ž©•ª‚ð”jŠü‚·‚é
+
 
     }
     private void OnCollisionEnter2D(Collision2D collision)

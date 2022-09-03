@@ -15,7 +15,7 @@ public class Enemy1 : MonoBehaviour
 
     [Header("èdóÕ")] public float gravity;
     GameObject PlayerObject;
-    Vector2 PlayeyPosition;
+    Vector2 PlayerPosition;
     Vector2 EnemyPosotion;
     private Rigidbody2D _rb = null;
 
@@ -24,7 +24,7 @@ public class Enemy1 : MonoBehaviour
     void Start()
     {
         PlayerObject = GameObject.FindWithTag("Player");
-        PlayeyPosition = PlayerObject.transform.position;
+        PlayerPosition = PlayerObject.transform.position;
         EnemyPosotion = transform.position;
         _rb = GetComponent<Rigidbody2D>();
         targetRenderer = GetComponent<Renderer>();
@@ -33,20 +33,20 @@ public class Enemy1 : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        PlayeyPosition = PlayerObject.transform.position;
+        PlayerPosition = PlayerObject.transform.position;
         EnemyPosotion = transform.position;
-        float distance = Vector2.Distance(EnemyPosotion, PlayeyPosition);
+        float distance = Vector2.Distance(EnemyPosotion, PlayerPosition);
 
 
         if (targetRenderer.isVisible && distance < _tagetarea)
         {
 
-            _rb.velocity = Vector2.up * _yspeed;
+            _rb.velocity = (PlayerPosition - EnemyPosotion).normalized * _yspeed;
             //_rb.velocity = Vector2.right * _xspeed;
         }
 
 
-        if (distance < _tagetarea && PlayeyPosition.y > EnemyPosotion.y)
+        if (distance < _tagetarea && PlayerPosition.y > EnemyPosotion.y)
         {
             Destroy(this.gameObject, _lifeTime);
         }
