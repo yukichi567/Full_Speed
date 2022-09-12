@@ -7,15 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
+    public float _Point;
 
-
-
-    public float _Point ;
- 
     [SerializeField]
     [Header("Œo‰ßŽžŠÔ")]
     public float _count;
-    public float _time ;
+    public float _time;
     //[SerializeField] Text _Timer;
     [SerializeField] Text _timerlimit;
 
@@ -28,8 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameover = null;
 
     int score = 0;
-    [SerializeField]  Text _score;
-     
+    [SerializeField] Text _score;
+
     GameObject P2;
     GameObject PD;
     GameObject TM;
@@ -77,7 +74,7 @@ public class GameManager : MonoBehaviour
 
         _score.text = $"{_Point.ToString("F0")}";
 
-       // _score.text = score.ToString();
+        // _score.text = score.ToString();
 
         //if (_count <= 0 )
         //{
@@ -86,9 +83,13 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void Point(int i )
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        _Point += i;
+        
     }
 
+    public void AddScore(int score)
+    {
+
+    }
 }

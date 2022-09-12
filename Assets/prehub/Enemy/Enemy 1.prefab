@@ -147,8 +147,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _xspeed: 0
-  _yspeed: 10
-  _tagetarea: 15
+  _yspeed: 8
+  _tagetarea: 12
+  _tagetarea2: 100
   gravity: 0
   _lifeTime: 1
   m_effectPrefab: {fileID: 4017953126771683243, guid: fd1280fb5af45a54292157e65ca4040f, type: 3}

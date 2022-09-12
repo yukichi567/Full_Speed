@@ -36,11 +36,10 @@ public class Enemy2 : MonoBehaviour
         PlayeyPosition = PlayerObject.transform.position;
         EnemyPosotion = transform.position;
         float distance = Vector2.Distance(EnemyPosotion, PlayeyPosition);
+        
 
-
-        if (targetRenderer.isVisible && distance < _tagetarea)
+        if (targetRenderer.isVisible || distance < _tagetarea)
         {
-
             _rb.velocity = Vector2.up * _yspeed;
             //_rb.velocity = Vector2.right * _xspeed;
         }

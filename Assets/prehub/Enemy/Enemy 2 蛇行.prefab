@@ -146,8 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76114ca7091691349b814a4ed3480b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _yspeed: 15
-  _tagetarea: 15
+  _xspeed: 0
+  _yspeed: 10
+  _tagetarea: 30
   gravity: 0
   _lifeTime: 1
   m_effectPrefab: {fileID: 4017953126771683243, guid: fd1280fb5af45a54292157e65ca4040f, type: 3}

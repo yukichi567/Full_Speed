@@ -8,6 +8,7 @@ public class Seekbar : MonoBehaviour
     [SerializeField]
     [Header("シークバー")]
     Slider _TimeSlider;
+
     public float _time;
     public float _gameOverTime;
 
@@ -17,11 +18,15 @@ public class Seekbar : MonoBehaviour
         //_time = GameObject.FindObjectOfType<GameManager>();
         //_gameOverTime = GameObject.FindObjectOfType<GameManager>();
         _TimeSlider = GetComponent<Slider>();
+        _TimeSlider.maxValue = 60.0f;
+        _TimeSlider.value = _TimeSlider.maxValue;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //_TimeSlider = _time / _gameOverTime;
+        //_time += ;
+        _TimeSlider.value = _TimeSlider.value - Time.deltaTime;
     }
+
 }

@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1d6e0a89043764ea0f63b1967d50ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _yspeed: 7
-  _tagetarea: 15
+  _yspeed: 6
+  _tagetarea: 12
+  _tagetarea2: 100
   gravity: 0
   _lifeTime: 1

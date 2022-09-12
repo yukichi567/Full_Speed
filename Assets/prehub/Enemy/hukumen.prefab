@@ -99,9 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2e66b32327bea4eb28c60bb1608483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xspeed: 6
   _yspeed: 6
-  _tagetarea: 15
+  _tagetarea: 20
   gravity: 0
   _lifeTime: 1
 --- !u!61 &2677661314788636949

@@ -5,12 +5,23 @@ using UnityEngine;
 public class Road_Speed : MonoBehaviour
 {
     /// <summary>スクロールするスピード</summary>
-    [SerializeField] public float _scrollSpeed = 10f;
+    [SerializeField]
+    [Header("スクロールスピード")]
+    public float _scrollSpeed = 10f;
+
+    [SerializeField]
+    [Header("スピードメーター")]
+    GameObject _meter = null;
+
+
+    [SerializeField]
+    [Header("針の角度")]
+
 
     /// <summary>下まで行ったらこの位置にリセットされる</summary>
-    Vector3 _restartPos = new Vector3(0, 120, 0);
+    Vector3 _restartPos = new Vector3(0, 450, 0);
     /// <summary>ここまで来たら位置をリセットする</summary>
-    Vector3 _endPos = new Vector3(0, -140, 0);
+    Vector3 _endPos = new Vector3(0, -450, 0);
 
 
 
@@ -38,6 +49,9 @@ public class Road_Speed : MonoBehaviour
         {
             _scrollSpeed -= 10;
         }
+
+
+
     }
 
 
