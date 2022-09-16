@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     /// <summary>ñ≥ìGÉÇÅ[Éh</summary>
     [SerializeField] bool m_godMode = false;
-    [SerializeField] public float _PlayerSpeed = 5f;
+    [SerializeField] public static float _PlayerSpeed = 5f;
     Rigidbody2D _rb;
 
     // Start is called before the first frame update

@@ -7,7 +7,7 @@ public class Road_Speed : MonoBehaviour
     /// <summary>スクロールするスピード</summary>
     [SerializeField]
     [Header("スクロールスピード")]
-    public float _scrollSpeed = 10f;
+    public static float _scrollSpeed = 10f;
 
     [SerializeField]
     [Header("スピードメーター")]
