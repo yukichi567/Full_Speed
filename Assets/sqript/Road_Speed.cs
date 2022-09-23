@@ -1,33 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Road_Speed : MonoBehaviour
 {
     /// <summary>スクロールするスピード</summary>
     [SerializeField]
     [Header("スクロールスピード")]
-    public static float _scrollSpeed = 10f;
+    public float _scrollSpeed = 10f;
 
     [SerializeField]
     [Header("スピードメーター")]
-    GameObject _meter = null;
-
-
-    [SerializeField]
-    [Header("針の角度")]
-
+    Text Speed;
+    public float _meterspeet;
+    float _meter;
 
     /// <summary>下まで行ったらこの位置にリセットされる</summary>
     Vector3 _restartPos = new Vector3(0, 450, 0);
     /// <summary>ここまで来たら位置をリセットする</summary>
     Vector3 _endPos = new Vector3(0, -450, 0);
-
-
+    GameManager _gm;
 
     void Start()
     {
-     
+        //Speed = GameObject.Find("SpeedMeter").GetComponent<Text>();
     }
 
     void Update()
@@ -50,7 +48,8 @@ public class Road_Speed : MonoBehaviour
             _scrollSpeed -= 10;
         }
 
-
+        _meter = _scrollSpeed + _meterspeet;
+        Speed.text = $"{_meter.ToString("F0")}";
 
     }
 

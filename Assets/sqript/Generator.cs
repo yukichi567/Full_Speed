@@ -10,21 +10,32 @@ public class Generator : MonoBehaviour
     [SerializeField] AudioClip _bgm;
     float _timer;
 
+
     /// <summary>フィールドのオブジェクトを格納</summary>
     GameObject _field;
+    GameManager _gm;
 
-    private void Awake()
-    {
-        //SoundManager.Instance.PlayBGM(_bgm);
-    }
     void Start()
     {
         _field = GameObject.FindGameObjectWithTag("Road");
+        _gm = GameObject.FindObjectOfType<GameManager>();
     }
 
     void Update()
     {
         _timer += Time.deltaTime;
+        //if(_gm._time < 60 )
+        //{
+        //    _interval = 3f;
+        //}
+        //else if (_gm._time < 40)
+        //{
+        //    _interval = 2.3f;
+        //}
+        //else
+        //{
+        //    _interval = 1.5f;
+        //}
         if (_timer > _interval)
         {
             int number = Random.Range(0, _Generateposition.Length);

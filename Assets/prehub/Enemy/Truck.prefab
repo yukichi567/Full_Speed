@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1977345531607266875}
   m_Layer: 6
   m_Name: Truck
-  m_TagString: Enemy
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,5 +149,4 @@ MonoBehaviour:
   _yspeed: 6
   _tagetarea: 12
   _tagetarea2: 100
-  gravity: 0
   _lifeTime: 1

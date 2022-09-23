@@ -5,29 +5,22 @@ public class Player_Damage : MonoBehaviour
 {
     //HP & HPgage
     [SerializeField] Image _life;
-    [SerializeField] public static float _hp = 5f;
+    [SerializeField] public float _hp = 5f;
     float _maxhp = 1f;
 
     //DamageCooltime
     [SerializeField] Text _timerlimit;
     [SerializeField] float _Damagetimer = 1;
 
-    //gameover
-    //[SerializeField] Image _background;
-    //[SerializeField] Image _gameover;
-    //public float _gameovertimer;
-    //public float _ContinueCount;
-    //[SerializeField] Text _GameOvertime;
-    //[SerializeField] Button _Continue;
-    // float _ContinueTime;
     [SerializeField] GameObject explosionEffect = null;
 
 
     GameManager _time;
+    Road_Speed _rs;
     // Start is called before the first frame update
     void Start()
     {
-
+        _rs = GameObject.FindObjectOfType<Road_Speed>();
         _time = GameObject.FindObjectOfType<GameManager>();
     }
 
@@ -39,19 +32,19 @@ public class Player_Damage : MonoBehaviour
 
         //_ContinueTime += Time.deltaTime;
 
-        if (_hp <= 0)
-        {
-             //GameObject go = Instantiate(explosionEffect);
-            _timerlimit.gameObject.SetActive(true);
-            Road_Speed._scrollSpeed = 0;
-            PlayerController._PlayerSpeed = 0;
-            //_background.gameObject.SetActive(true);
-            //_gameover.gameObject.SetActive(true);
-            _time.gameObject.SetActive(true);
-            //_Continue.gameObject.SetActive(true);
+        //if (_hp <= 0)
+        //{
+        //     //GameObject go = Instantiate(explosionEffect);
+        //    _timerlimit.gameObject.SetActive(true);
+        //    Road_Speed._scrollSpeed = 0;
+        //    PlayerController._PlayerSpeed = 0;
+        //    //_background.gameObject.SetActive(true);
+        //    //_gameover.gameObject.SetActive(true);
+        //    _time.gameObject.SetActive(true);
+        //    //_Continue.gameObject.SetActive(true);
 
-            //_GameOvertime.text = $"{_ContinueTime.ToString("F0")}";
-        }
+        //    //_GameOvertime.text = $"{_ContinueTime.ToString("F0")}";
+        //}
 
 
             
@@ -64,10 +57,7 @@ public class Player_Damage : MonoBehaviour
 
         if (_Damagetimer >= 1 && collision.gameObject.tag == "Enemy" )
         {
-            //_HP -= 1;
-            //_Damagetimer = 0;
-            //_MaxHp -= 0.2f;
-            Road_Speed._scrollSpeed = 10;
+            _rs._scrollSpeed = 10;
 
 
         }
@@ -76,7 +66,7 @@ public class Player_Damage : MonoBehaviour
             _hp -= 1;
             _Damagetimer = 0;
             _maxhp -= 0.2f;
-            Road_Speed._scrollSpeed = 10;
+            _rs._scrollSpeed = 10;
             //_time._time += 3;
         }
         else if (_Damagetimer >= 1 && collision.gameObject.tag == "Police")
@@ -84,7 +74,7 @@ public class Player_Damage : MonoBehaviour
             _hp -= 2;
             _Damagetimer = 0;
             _maxhp -= 0.4f;
-            Road_Speed._scrollSpeed = 10;
+            _rs._scrollSpeed = 10;
            // _time._time -= 10;
 
         }

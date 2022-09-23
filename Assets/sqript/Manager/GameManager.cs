@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null;
 
     public float _Point;
 
@@ -19,91 +18,79 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     [Header("プレイ時間の初期値")]
-    private float _GameOverTime = 60f;
+    public float _GameOverTime = 60f;
 
     [Header("クリア、ゲームオーバー画像")]
     [SerializeField]
-    GameObject _gameOver;
+    GameObject _gameover;
     [SerializeField]
-    GameObject _gameClear;
+    GameObject _gameclear;
+    [SerializeField]
+    GameObject _generater;
 
     [Header("スコア")]
     [SerializeField]
-    int score = 0;
-    [SerializeField] Text _score;
+    public float _score = 0f;
+    Text _scoretext;
+    int score;
 
-    GameObject P2;
-    GameObject PD;
-    GameObject TM;
+    [Header("他script")]
+    Player_Damage _playerdamage;
+    Road_Speed _roadspeed;
+    PlayerController _playercontroller;
+
     float _EnemyPoint;
-    bool _isGame;
+    bool _isGame = true;
 
     /// <summary>スコア表示用 Text</summary>
 
     // Start is called before the first frame update
-    private void Awake()
-    {
-
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
 
     private void Start()
     {
-        P2 = GameObject.Find("Player");
-        TM = GameObject.Find("Time");
         _Point = 0;
-
+        _playerdamage = GameObject.FindObjectOfType<Player_Damage>();
+        _roadspeed = GameObject.FindObjectOfType<Road_Speed>();
+        _playercontroller = GameObject.FindObjectOfType<PlayerController>();
+        _scoretext = GameObject.Find("Score").GetComponent<Text>();
     }
 
     private void Update()
     {
         if (_isGame)
         {
-            _Point += Road_Speed._scrollSpeed / 10;
+            _score += _roadspeed._scrollSpeed / 10;
             _time += Time.deltaTime;
             _count = _GameOverTime - _time;
-            //_timerlimit.text = $"{_count.ToString("F1")}";
 
-            _score.text = $"{_Point.ToString("F0")}";
-
-            // _score.text = score.ToString();
-
-            //if (_count <= 0 )
-            //{
-            //    _scrollSpeed._scrollSpeed = 0;
-            //}
+            _scoretext.text = $"{_score.ToString("F0")}";
 
             if (_count <= 0)
             {
                 _isGame = false;
-                _gameClear.gameObject.SetActive(true);
+                _gameclear.gameObject.SetActive(true);
+                _playercontroller._PlayerSpeed = 0;
+                _generater.gameObject.SetActive(false);
             }
 
-            if (Player_Damage._hp <= 0)
+            if (_playerdamage._hp <= 0)
             {
                 _isGame = false;
-                _gameOver.gameObject.SetActive(true);
-                Road_Speed._scrollSpeed = 0;
-                PlayerController._PlayerSpeed = 0;
-                Debug.Log("aaaa");
+                _gameover.gameObject.SetActive(true);
+                _roadspeed._scrollSpeed = 0;
+                _roadspeed._meterspeet = 0;
+                _playercontroller._PlayerSpeed = 0;
+                _generater.gameObject.SetActive(false);
             }
         }
         else if (_isGame == false)
         {
-            //_resultTet.text = $"{_score.ToString("00000")}";
+
         }
     }
 
     public void AddScore(int score)
     {
-
+        _score += score;
     }
 }

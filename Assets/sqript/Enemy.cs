@@ -20,8 +20,8 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D _rb = null;
 
     [SerializeField] float _lifeTime = 1f;
-
-
+    [SerializeField] int _score;
+    GameManager _gamemanager;
     /// <summary>Destroy時に表示されるエフェクト</summary>
     [SerializeField] GameObject m_effectPrefab = default;
     public int dir = 1;
@@ -37,8 +37,8 @@ public class Enemy : MonoBehaviour
         targetRenderer = GetComponent<Renderer>();
         PlayerPosition = PlayerObject.transform.position;
         EnemyPosotion = transform.position;
-
-       // _EnemyPoint = GameObject.FindObjectOfType<GameManager>();
+        _gamemanager = GameObject.FindObjectOfType<GameManager>();
+        // _EnemyPoint = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
       
         if (collision.gameObject.tag == ("Wall") && targetRenderer.isVisible)
         {
-            //_EnemyPoint.score += 5000;
+            _gamemanager.AddScore(_score);
             Destroy(gameObject);
             Instantiate(m_effectPrefab, transform.position, transform.rotation);
         }

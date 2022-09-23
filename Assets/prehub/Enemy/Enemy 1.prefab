@@ -150,8 +150,8 @@ MonoBehaviour:
   _yspeed: 8
   _tagetarea: 12
   _tagetarea2: 100
-  gravity: 0
   _lifeTime: 1
+  _score: 5000
   m_effectPrefab: {fileID: 4017953126771683243, guid: fd1280fb5af45a54292157e65ca4040f, type: 3}
   dir: 1
   _EnemyPoint: {fileID: 0}
