@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     public float _count;
     public float _time;
 
-    [Header("時間表示")]
-    [SerializeField] Text _timerlimit;
+    //[Header("時間表示")]
+    //[SerializeField] Text _timerlimit;
 
     [SerializeField]
     [Header("プレイ時間の初期値")]
@@ -27,11 +27,15 @@ public class GameManager : MonoBehaviour
     GameObject _gameclear;
     [SerializeField]
     GameObject _generater;
+    [SerializeField]
+    GameObject _player;
 
     [Header("スコア")]
     [SerializeField]
     public float _score = 0f;
     Text _scoretext;
+
+
     int score;
 
     [Header("他script")]
@@ -53,6 +57,8 @@ public class GameManager : MonoBehaviour
         _roadspeed = GameObject.FindObjectOfType<Road_Speed>();
         _playercontroller = GameObject.FindObjectOfType<PlayerController>();
         _scoretext = GameObject.Find("Score").GetComponent<Text>();
+
+
     }
 
     private void Update()
@@ -62,8 +68,8 @@ public class GameManager : MonoBehaviour
             _score += _roadspeed._scrollSpeed / 10;
             _time += Time.deltaTime;
             _count = _GameOverTime - _time;
-
             _scoretext.text = $"{_score.ToString("F0")}";
+
 
             if (_count <= 0)
             {
@@ -71,6 +77,7 @@ public class GameManager : MonoBehaviour
                 _gameclear.gameObject.SetActive(true);
                 _playercontroller._PlayerSpeed = 0;
                 _generater.gameObject.SetActive(false);
+
             }
 
             if (_playerdamage._hp <= 0)
@@ -81,6 +88,8 @@ public class GameManager : MonoBehaviour
                 _roadspeed._meterspeet = 0;
                 _playercontroller._PlayerSpeed = 0;
                 _generater.gameObject.SetActive(false);
+
+
             }
         }
         else if (_isGame == false)
