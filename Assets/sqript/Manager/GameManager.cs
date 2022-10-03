@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject _generater;
     [SerializeField]
+    GameObject _generater2;
+    [SerializeField]
     GameObject _player;
 
     [Header("ÉXÉRÉA")]
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
                 _gameclear.gameObject.SetActive(true);
                 _playercontroller._PlayerSpeed = 0;
                 _generater.gameObject.SetActive(false);
+                _generater2.gameObject.SetActive(false);
 
             }
 
@@ -88,6 +91,7 @@ public class GameManager : MonoBehaviour
                 _roadspeed._meterspeet = 0;
                 _playercontroller._PlayerSpeed = 0;
                 _generater.gameObject.SetActive(false);
+                _generater2.gameObject.SetActive(false);
 
 
             }

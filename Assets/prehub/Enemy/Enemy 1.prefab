@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _xspeed: 0
-  _yspeed: 8
+  _yspeed: 9
   _tagetarea: 12
   _tagetarea2: 100
   _lifeTime: 1
